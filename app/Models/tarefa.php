@@ -21,7 +21,6 @@ protected $fillable=[
 'tituloTarefa',
 'descricaoTarefa',
 'dataCriacao',
-'senha',
 'dataConclusao',
 'prioridade',
 'categoria',
