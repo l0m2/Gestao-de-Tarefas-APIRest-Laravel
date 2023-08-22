@@ -48,15 +48,17 @@ public function login(Request $request)
     }
 
    
-    if (!Auth::attempt($validator->validated())) {
+    else if (!Auth::attempt($validator->validated())) {
         return response(['message' => 'Credenciais inválidas'], 401);
     }
+    
 
-    $user = Auth::User();
-
-
+    $user = User::where('password', $request['password'])->first();
+  
+    //else if($user->email === $request['email']){
     $accessToken = $user->createToken('authToken')->plainTextToken;
 
     return response(['user' => $user, 'access_token' => $accessToken]);
+
 }
 }
